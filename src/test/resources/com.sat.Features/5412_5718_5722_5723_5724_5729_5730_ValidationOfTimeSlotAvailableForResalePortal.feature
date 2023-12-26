@@ -1,0 +1,25 @@
+#Author: neha.sain@hcl.com
+#Keywords Summary :
+@TC5412_5718_5722_5723_5724_5729_5730_5345_Verify_User_Next_Available_Time_To_Book_The_Appointment_For_Particular_Date_From_Resale_Portal
+Feature: 5412_5345_Verify_User_Next_Available_Time_To_Book_The_Appointment_For_Particular_Date_From_Resale_Portal
+
+  Scenario Outline: TC5412_5345_Verify_User_Next_Available_Time_To_Book_The_Appointment_For_Particular_Date_From_Resale_Portal
+    Given Login to Admin tool App
+    Then change the Country "<Country>" and brand "<Brand>"
+    When clicked on store Calendar then select store "<storeName>" and check the "<StoreStatus>"
+    Then check calender is not generated for the Resale Portal "<serviceName>" "<Brand>" "<Country>" "<storeName>" "<click&MeetstoreName>" "Enable" and log in resale portal "<url>" "<username>" "<password>"
+    ## When User login to ResalePortal "<url>" with valid "<username>" and "<password>"
+    When register an item with below fields "<Store_Name>","<brand_name>","<Gender>","<Category>","<Condition>","<Color>","<Pattern>","<Material>","<Unsolditem>" and submit it
+    Then Validate the message is displayed on selecting today date from the Select date & time "<ExpextedText>"
+    And Click on Next available time then the validate message "<NextText>" "<ExpextedText>"
+
+    Examples: 
+      | Brand   | Country         | storeName | click&MeetstoreName     | serviceName | StoreStatus | url                        | username             | password               | Store_Name                          | brand_name | Gender | Category                             | Condition | Color | Pattern | Material | Unsolditem              | ExpextedText                                                                       | NextText                                                                                                                 |
+      | WEEKDAY | The Netherlands | (NL0650)  | (NL0650)                | Rental      | Store Open  | QA_ResalePortal_Weekday_NL | resale_portal_userid | resale_portal_password | Weekday Amsterdam, Amsterdam        | portal     | Women  | 7ab70652-c1a9-eb11-b1ac-000d3a45ad31 | Vintage   | Black | Floral  | Bamboo   | item ophalen in winkel  | Helaas hebben wij op deze dag geen beschikbare tijdslots.Volgende beschikbare tijd | Geen toekomstige data beschikbaar.\nProbeer het op een andere dag opnieuw.\nWij zullen binnenkort meer dagen toevoegen.  |
+      | monki   | Sweden          | Hansa     | Hansa                   | Resale      | Store Open  | QA_ResalePortal_monki_SE   | resale_portal_userid | resale_portal_password | Hansa, Malmö                        | ONLY       | Unisex | Shoes                                | Vintage   | Black | Floral  | Cotton   | Pick-up item from store | Unfortunately, we do not have any available times on this day.Next available time  | No future dates available.\nPlease come back another day to book an appointment.\nIn the mean time we will add more days |
+      | WEEKDAY | Sweden          | (SE0652)  | Götgatan 21             | Rental      | Store Open  | QA_ResalePortal_Weekday_SE | resale_portal_userid | resale_portal_password | Götgatan 21, Stockholm              | portal     | Women  | Dresses                              | Vintage   | Black | Floral  | Cotton   | Pick-up item from store | Unfortunately, we do not have any available times on this day.Next available time  | No future dates available.\nPlease come back another day to book an appointment.\nIn the mean time we will add more days |
+      | WEEKDAY | Belgium         | (BE0406)  | Sint-pietersnieuwstraat | Resell      | Store Open  | QA_ResalePortal_Weekday_BE | resale_portal_userid | resale_portal_password | Sint-pietersnieuwstraat 58/62, Gent | portal     | Women  | Dresses                              | Vintage   | Black | Floral  | Cotton   | Pick-up item from store | Unfortunately, we do not have any available times on this day.Next available time  | No future dates available.\nPlease come back another day to book an appointment.\nIn the mean time we will add more days |
+      | ARKET   | Sweden          | (SE0701)  | Drottninggatan 56       | Resell      | Store Open  | QA_ResalePortal_arket_SE   | resale_portal_userid | resale_portal_password | Drottninggatan 56, Stockholm        | portal     | Women  | Dresses                              | New       | Black | Floral  | Cotton   | Pick-up item from store | Unfortunately, we do not have any available times on this day.Next available time  | No future dates available.\nPlease come back another day to book an appointment.\nIn the mean time we will add more days |
+#p  | H&M |  Germany   | Mitte Garten   | (DE0159)        | Rental       | Store Open  | QA_ResalePortal_HM_DE | resale_portal_userid | resale_portal_password | Götgatan 21, Stockholm | portal     | Women  | Dresses  | Vintage   | Black | Floral  | Cotton   | Pick-up item from store | Unfortunately, we do not have any available times on this day.Next available time | No future dates available.\nPlease come back another day to book an appointment.\nIn the mean time we will add more days |  
+     
+    
